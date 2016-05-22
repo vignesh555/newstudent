@@ -1,0 +1,83 @@
+<a ng-href="#/list">List</a>
+<form name="userForm"  ng-class="{error:!userForm.username.$valid}" novalidate>
+  <table class="table">
+    <tbody>
+      <tr class="success">
+        <td>First Name</td>
+        <td>
+            <input type='text' name="firstName" ng-pattern="/^[a-zA-Z]*$/" ng-model="editDeleteObj.editRegister.fName" ng-minlength="3" required="true"/>
+            <br/>
+            <span ng-show="userForm.firstName.$dirty && userForm.firstName.$error.required">First Name is required!</span>
+            <span ng-show="userForm.firstName.$error.minlength && !userForm.firstName.$error.required">First Name is too short</span>
+            <span ng-show="userForm.firstName.$error.pattern && !userForm.firstName.$error.required && !userForm.firstName.$error.minlength">First Name must be only letter</span>
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Last Name</td>
+        <td>
+            <input type='text' name="lastName" ng-pattern="/^[a-zA-Z]*$/" ng-model="editDeleteObj.editRegister.lName" ng-minlength="3" required="true"/>
+            <br/>
+            <span ng-show="userForm.lastName.$dirty && userForm.lastName.$error.required">First Name is required!</span>
+            <span ng-show="userForm.lastName.$error.minlength && !userForm.lastName.$error.required">First Name is too short</span>
+            <span ng-show="userForm.lastName.$error.pattern && !userForm.lastName.$error.required && !userForm.lastName.$error.minlength">First Name must be only letter</span>
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Date of Birth</td>
+        <td>
+          <input type='date' name="dateVal" ng-model="editDeleteObj.editRegister.dob" ng-required/>
+          <br/>
+          <span ng-show="userForm.dateVal.$error.date">Not a valid date format</span>
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Url</td>
+        <td>
+          <input type='url' name="url" ng-model="editDeleteObj.editRegister.url" />
+          <br/>
+          <span ng-show="userForm.url.$error.url">Url is not in correct format</span>
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Email</td>
+        <td>
+          <input type='email' name="email" ng-model="editDeleteObj.editRegister.email" />
+          <br/>
+          <span ng-show="userForm.email.$invalid">Email is not in correct format</span>
+        </td>
+      </tr>
+     <!--  <tr class="success">
+        <td>Age</td>
+        <td><input type='text' ng-model="editDeleteObj.editRegister.age" /></td>
+      </tr> -->
+      
+      <tr class="success">
+        <td>Country</td>
+        <td> <select name='country' id="country" class="form-control" ng-model="editDeleteObj.editRegister.country" ng-options="country as country.CountryName for country in editDeleteObj.countries" required ng-change="editDeleteObj.countryChange(editDeleteObj.editRegister.country)">
+                <option value="" disabled>Select</option>
+            </select></td>
+
+      </tr>
+      <tr class="success">
+        <td>State</td>
+        <td> <select name='state' required id="state" class="form-control" ng-disabled="states.length == 0" ng-model="editDeleteObj.editRegister.state" ng-options="state as state.StateName for state in editDeleteObj.states">
+                <option value="" disabled>Select</option>
+            </select></td>
+        
+      </tr>
+      <tr class="success">
+        <td>Phone</td>
+        <td>
+          <input type='text' ng-model="editDeleteObj.editRegister.telephone" phoneformat  name="input1"/>
+          <br/>
+          <span class="error" ng-show="userForm.input1.$error.parse">Numbers only!</span>
+          <span class="error" ng-show="userForm.input1.$error.parse">Exact 10 Numbers only!</span>
+        </td>
+      </tr>
+       <tr class="success">
+        <td><input type="button" class="btn btn-success" value="Update" ng-click="editDeleteObj.updateRegister(editDeleteObj.editRegister)"/></td>
+        <td><input type='button' value="Delete" ng-click="editDeleteObj.deleteRegister(editDeleteObj.editRegister)"/></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

@@ -1,0 +1,31 @@
+
+<div class="full-width">
+	<select ng-model="selectRows" ng-change="selectRowChanges()" class="pull-left">
+	  <option>Please Select Number of rows</option>
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	</select>
+
+
+	<div class="blockElement pull-right" ng-if="noPages > 1">
+		
+		<input ng-click="goToFirstPage()" type="button" value="<<" ng-hide="!firstPage"/>
+		<input ng-click="prevPage()" type="button" value="<" ng-hide="!firstPage"/>
+			<ul class="pagesBtn">
+				<li ng-repeat="pageArrayObj in pageArray" ng-class="{activate:pageArrayObj.active}" ng-click="displayPages(pageArrayObj)">{{ pageArrayObj.page }}</li>	
+			</ul>
+		<input ng-click="nextPage()" type="button" value=">" ng-hide="!lastPage"/>
+		<input ng-click="goToLastPage()" type="button" value=">>" ng-hide="!lastPage"/>
+	</div>
+</div>
+
+<div ng-transclude>
+</div>
+
+
+
+
+

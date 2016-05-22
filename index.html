@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Student App</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body ng-app="studentApp" class="container">
+	
+	
+	<loading-mask loading-flag="loadingFlag" loading-text="{{loadingText}}"></loading-mask>
+	
+	<div ng-view></div>
+	
+</body>
+
+
+
+<script src="./scripts/lib/angular.min.js"></script>
+<script src="./scripts/lib/angular-route.min.js"></script>
+<script src="./scripts/lib/angular-resource.min.js"></script>
+
+
+<script src="./scripts/home.js"></script>
+<script src="./scripts/controllers/registrationCtrl.js"></script>
+<script src="./scripts/controllers/listCtrl.js"></script>
+<script src="./scripts/controllers/editDeleteCtrl.js"></script>
+<script src="./scripts/services/sharedService.js"></script>
+<script src="./scripts/constants/studentConstants.js"></script>
+<script src="./scripts/directives/pagination.js"></script>
+<script src="./scripts/directives/phoneFormat.js"></script>
+<script src="./scripts/directives/loadingMask.js"></script>
+
+</html>

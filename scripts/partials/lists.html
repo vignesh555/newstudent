@@ -1,0 +1,29 @@
+
+<a ng-href="#/register">Add</a>
+  
+
+<div ng-if="listObj.dataSearch.length > 0">
+  <all-data-pagination no-rows-per-page="{{listObj.noRowsPerPage}}" page-content="{{listObj.dataSearch}}" no-button-display="{{listObj.noButtonDisplay}}" clear-user-data="listObj.clearUserData(registerList)">
+  <table class="table">
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+       <!--  <th>Age</th> -->
+        <th>Operation</th>
+    </thead>
+    <tbody>
+      <tr class="success" ng-repeat="obj in listObj.userData">
+        <td><label ng-bind="obj.fName" /></td>
+        <td><label ng-bind="obj.lName" /></td>
+        <td><label ng-bind="obj.dob" /></td>
+        <!-- <td><label ng-bind="obj.age" /></td> -->
+        <td><input type="button" class="btn btn-success" value="Edit / Remove" ng-click="listObj.editDeleteRedirectFn(obj._id.$oid)"/></td>
+      </tr>
+    </tbody>
+  </table>
+  </all-data-pagination>
+</div>
+
+
+

@@ -1,0 +1,26 @@
+.pagesBtn{
+    list-style-type: none;
+    margin: 10px 0px;
+    padding: 0;
+}
+
+.pagesBtn li{
+    display: inline;
+	padding: 5px;
+	border: 1px solid;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.activate{
+    background: blue;
+    color: white;    
+}
+
+.blockElement *{
+    display: inline;
+}
+
+.full-width{
+    width:100%;
+}

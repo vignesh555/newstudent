@@ -1,0 +1,95 @@
+
+
+<a ng-href="#/list">List</a>
+
+<loading-mask-internal loading-flag-internal="registrationObj.loadingFlagInternal" loading-text="{{registrationObj.loadingTextInternal}}"></loading-mask-internal>
+
+
+<form name="userForm" ng-show="registrationObj.showRegistrationForm" ng-class="{error:!userForm.username.$valid}" novalidate>
+  <table class="table">
+    <tbody>
+      <tr class="success">
+        <td>First Name</td>
+        <td><input type='text' name="firstName" ng-pattern="/^[a-zA-Z]*$/"  ng-minlength="3" required="true" ng-model="registrationObj.register.fName" />
+        <br/>
+          <span ng-show="registrationObj.submitValidation && userForm.firstName.$dirty && userForm.firstName.$error.required">First Name is required!</span>
+          <span ng-show="registrationObj.submitValidation && userForm.firstName.$error.minlength && !userForm.firstName.$error.required">First Name is too short</span>
+           <span ng-show="registrationObj.submitValidation && userForm.firstName.$error.pattern && !userForm.firstName.$error.required && !userForm.firstName.$error.minlength">First Name must be only letter</span>
+          <!-- <span ng-show="userForm.firstName.$error.pattern">First Name must be only letter and number</span> -->
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Last Name</td>
+        <td><input type='text' name="lastName" ng-pattern="/^[a-zA-Z]*$/" ng-model="registrationObj.register.lName" ng-minlength="3" required="true"/>
+          <br/>
+          <span ng-show="registrationObj.submitValidation && userForm.lastName.$dirty && userForm.lastName.$error.required">Last Name is required!</span>
+          <span ng-show="registrationObj.submitValidation && userForm.lastName.$error.minlength && !userForm.lastName.$error.required">Last Name is too short</span>
+          <span ng-show="registrationObj.submitValidation && userForm.lastName.$error.pattern && !userForm.lastName.$error.required && !userForm.firstName.$error.minlength">Last Name must be only letter</span>
+
+        </td>
+      </tr>
+      <tr class="success">
+        <td>Date of Birth</td>
+        <td><input type='date' name="dateVal" ng-model="registrationObj.register.dob" ng-required />
+            <br/>
+           <span ng-show="registrationObj.submitValidation && userForm.dateVal.$error.date">Not a valid date format</span>
+        </td>
+      </tr>
+
+      <tr class="success">
+        <td>Url</td>
+        <td>
+          <input type='url' name="url" ng-model="registrationObj.register.url"/>
+          <br/>
+          <span ng-show="registrationObj.submitValidation &&userForm.url.$error.url">Url is not in correct format</span>
+        </td>
+      </tr>
+
+      <tr class="success">
+        <td>Email</td>
+        <td>
+          <input type='email' name="email" ng-model="registrationObj.register.email"/>
+          <br/>
+          <span ng-show="registrationObj.submitValidation && userForm.email.$invalid">Email is not in correct format</span>
+        </td>
+      </tr>
+
+      <!-- <tr class="success">
+        <td>Age</td>
+        <td><input type='text' ng-model="registrationObj.register.age" /></td>
+      </tr> -->
+
+
+      <tr class="success">
+        <td>Country</td>
+        <td> <select name='country' id="country" class="form-control" ng-model="registrationObj.register.country" ng-options="country as country.CountryName for country in registrationObj.countries" required ng-change="registrationObj.countryChange(registrationObj.register.country)">
+                <option value="" disabled>Select</option>
+            </select></td>
+
+      </tr>
+      <tr class="success">
+        <td>State</td>
+        <td> <select name='state' required id="state" class="form-control" ng-disabled="states.length == 0" ng-model="registrationObj.register.state" ng-options="state as state.StateName for state in registrationObj.states">
+                <option value="" disabled>Select</option>
+            </select></td>
+        
+      </tr>
+
+      <tr class="success">
+        <td>Phone</td>
+        <td>
+          <input type="text"  ng-model="registrationObj.register.prefixVal" style="width:40px;" disabled/>
+          <input type="text" ng-model="registrationObj.register.telephone" phoneformat  name="input1" />
+          <br/>
+          <span class="error" ng-show="registrationObj.submitValidation && userForm.input1.$error.parse">Numbers only!</span>
+          <span class="error" ng-show="registrationObj.submitValidation && userForm.input1.$error.parse">Exact 10 Numbers only!</span>
+        </td>
+      </tr>
+
+       <tr class="success">
+        <td><input type="button" value="register" ng-click="registrationObj.registerFn(userForm)"/></td>
+        <td><input type='button' value="clear" /></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
